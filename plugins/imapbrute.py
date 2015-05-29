@@ -60,7 +60,7 @@ def Start(server_in, userlist_in, wordlist_in):
                 print('-' * 12)
                 print('User:', user, 'Password:', value)
                 M = imaplib.IMAP4(sys.argv[1])
-                M = login(user, value)
+                M = imaplib.login(user, value)
                 print('Login successful:', user, value)
                 M.close()
                 M.logout()

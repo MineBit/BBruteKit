@@ -7,9 +7,9 @@ from ftplib import FTP
 # mine_bit@brainhands.ru
 
 # Системные переменные:
-__name__ = 'ftp_brute_plugin_2'
+__name__ = 'ftp_bruteforse'
 __author__ = 'Mine_Bit'
-__file__ = 'ftp_brute_plugin_2.py'
+__file__ = 'ftp_bruteforse.py'
 __package__ = 'plugins'
 
 

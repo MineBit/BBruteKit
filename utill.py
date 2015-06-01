@@ -3,6 +3,7 @@
 # brainhands.ru
 # mine_bit@brainhands.ru
 
+
 # Массив, который будет хранить инфромацию, созданы ли файлы:
 files_created = [False, False, False, False, False, False, False, False, False, False, False, False, False, False,
                  False, False, False]

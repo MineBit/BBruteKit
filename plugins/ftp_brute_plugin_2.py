@@ -1,13 +1,22 @@
 import sys
 from ftplib import FTP
 
-__author__ = 'mine_bit'
+# -*- coding: utf-8 -*-
+# Coded by Mine_Bit[BrainHands]
+# brainhands.ru
+# mine_bit@brainhands.ru
+
+# Системные переменные:
+__name__ = 'ftp_brute_plugin_2'
+__author__ = 'Mine_Bit'
+__file__ = 'ftp_brute_plugin_2.py'
+__package__ = 'plugins'
 
 
-def brute(host, username, passwords_file):
+def ftp_brute(host, username, passwords_file):
     try:
         passwords = open(passwords_file, "r").readlines()
-    except(IOError):
+    except IOError:
         print('[Ошибка] Не удалось найти файл с паролями!')
         sys.exit(1)
     if len(passwords_file) == 0:

@@ -6,7 +6,7 @@
 # Системные переменные:
 import time
 
-__name__ = 'parser'
+__name__ = 'gluinger'
 __author__ = 'Mine_Bit'
 __file__ = 'gluinger.py'
 __package__ = 'plugins'
@@ -42,13 +42,16 @@ def run_gluing():
     files_counter = 0
     array_file_names = []
     output_file_name = None
-    print('Запушен модуль "Склейщик" | Версия модуля: 0.2')
+    print('|' + '=' * 33 + '|')
+    print('| Плагин "Склейщик"               |')
     while True:
-        print('Меню модуля "Склейщик":')
-        print('[0] - Просмотреть значения')
-        print('[1] - Настроить значения')
-        print('[2] - Запустить выполнение модуля')
-        print('[777] - Выйти из модуля')
+        print('|' + '=' * 33 + '|')
+        print('| Меню плагина "Склейщик":       |')
+        print('| [0] - Просмотреть значения     |')
+        print('| [1] - Настроить значения       |')
+        print('| [2] - Запуск                   |')
+        print('| [777] - Выйти из плагина       |')
+        print('|' + '=' * 33 + '|')
         input_int = int(input('>>'))
         if input_int == 0:
             print('Значения:')

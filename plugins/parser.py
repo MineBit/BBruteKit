@@ -57,37 +57,38 @@ def run_parse():
     while True:
         print('|' + '=' * 33 + '|')
         print('| Меню плагина "Парсер":          |')
-        print('[0] - Просмотреть значения')
-        print('[1] - Настроить значения')
-        print('[2] - Запустить выполнение модуля')
-        print('[777] - Выйти из модуля')
-        input_int = int(input('>>'))
-        if input_int == 0:
+        print('| [0] - Просмотреть значения      |')
+        print('| [1] - Настроить значения        |')
+        print('| [2] - Запуск                    |')
+        print('| [777] - Выйти из плагина        |')
+        print('|' + '=' * 33 + '|')
+        input_n = input('>>')
+        if input_n == '0':
             print('Значения:')
             print('[0] - Файл для парсинга: ', file_to_parse)
             print('[1] - Основа имени файла для результата: ', out_file)
-        elif input_int == 1:
+        elif input_n == '1':
             while True:
                 print('Настройки значений:')
                 print('[0] - Файл для парсинга | Текущее значение: ', file_to_parse)
                 print('[1] - Основа имени файла для результата | Текущее значение: ', out_file)
                 print('[777] - Выход из настроек')
-                del input_int
-                input_int = int(input('>>'))
-                if input_int == 0:
+                del input_n
+                input_n = input('>>')
+                if input_n == '0':
                     print('Введите новое имя файла для парсинга:')
                     file_to_parse = str(input('>>'))
                     print('Новое значение присвоено!')
-                elif input_int == 1:
+                elif input_n == '1':
                     print('Введите основу имени файла для результата:')
                     print('!ВНИМАНИЕ! Данное значение не должно содержать расширение файла!')
-                    out_file = str(input('>>'))
+                    out_file = input('>> ')
                     print('Новое значение присвоено!')
-                elif input_int == 777:
+                elif input_n == '777':
                     break
                 else:
                     print('Ошибка ввода!')
-        elif input_int == 2:
+        elif input_n == '2':
             print('Проверяем значения:')
             try:
                 f = open(file_to_parse)
@@ -111,7 +112,7 @@ def run_parse():
                 finish_time = time.time()
                 print('Парсинг завершен!')
                 print('Время выполнения: ', str(finish_time - start_time), ' сек')
-        elif input_int == 777:
+        elif input_n == '777':
             print('Выход из модуля "Парсинг"...')
             break
         else:

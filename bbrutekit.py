@@ -14,7 +14,7 @@ import sys
 
 from plugins import parser
 from plugins import gluinger
-
+from plugins import generator
 
 # Метод для показа главного меню. Возвращает char значение выбранного пользователем элемента:
 def show_menu():
@@ -60,18 +60,21 @@ def main():
 # Запуск программы:
 if __name__ == '__main__':
     main()
-    menu_item = show_menu()
-    if menu_item == '1':
-        parser.run_parse()
-    elif menu_item == '2':
-        gluinger.run_gluing()
-    elif menu_item == '3':
-        pass
-    elif menu_item == '4':
-        pass
-    elif menu_item == 'h':
-        pass
-    elif menu_item == 'i':
-        pass
-    elif menu_item == 'x':
-        sys.exit(1)
+    while True:
+        menu_item = show_menu()
+        if menu_item == '1':
+            parser.run_parse()
+        elif menu_item == '2':
+            gluinger.run_gluing()
+        elif menu_item == '3':
+            generator.run_generate()
+        elif menu_item == '4':
+            pass
+        elif menu_item == 'h':
+            pass
+        elif menu_item == 'i':
+            pass
+        elif menu_item == 'x':
+            print('Спасибо за использование программы!')
+            print('По всем вопросам пишите сюда: mine_bit@brainhands.ru')
+            sys.exit(1)
